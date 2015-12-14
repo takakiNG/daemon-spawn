@@ -176,7 +176,7 @@ module DaemonSpawn
       living_daemons = find(opts).select { |d| d.alive? }
       if living_daemons.any?
         puts "Daemons already started! PIDS: #{living_daemons.map {|d| d.pid}.join(', ')}"
-        exit 1
+        exit 0
       else
         build(opts).map { |d| DaemonSpawn.start(d, args) }
       end
